@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section {
+            height: 37.5rem;
+            width: 28.125rem;
+            background: #536976;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #292E49, #536976);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #292E49, #536976);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            position: relative;
+            text-align: center;
+            border-color: #292E49;
+            border-style: groove;
+            border-radius: 20px;
+
+        }
+
+        .center {
+            height: 40%;
+            width: 80%;
+            margin: 10px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .clk {
+            height: 6.25em;
+            width: 12.5em;
+            border: 1px solid black;
+            background-color: #292E49;
+            margin: 10px;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            border: 2px solid black;
+            border-radius: 40px;
+            font-weight: 900;
+
+        }
+
+        button {
+            background-color: #fff;
+            display: block;
+            padding: 10px 32px;
+            text-transform: capitalize;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.2s linear;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+
+        button:visited {
+            color: black;
+        }
+
+        button:hover {
+            color: #d47508;
+            background-color: black;
+
+        }
+
+
+        button:active {
+            color: #f31559;
+        }
+
+        #header {
+            padding: 2px;
+            font-size: 1.6em;
+            margin-top: 20px;
+            color: #6DD5FA;
+            transition: all 0.3s linear;
+        }
+
+        #header:hover {
+            color: #f64f59;
+
+        }
+
+        span {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        p {
+            font-size: larger;
+            font-weight: 900;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero-section">
+
+        <h1 id="header">THE CLOCK IS TICKING</h1>
+        <div class="center">
+            <span>Your Local Time Here</span>
+            <div class="clk">
+                <p></p>
+            </div>
+
+        </div>
+        <p>Click below to change the Clock colour</p>
+        <button>Change</button>
+
+    </section>
+</body>
+<script>
+
+
+let btn = document.querySelector("button")
+// let randomColor = function () {
+
+//         }
+
+
+
+    let clock = document.querySelector(".clk")
+    console.log(clock);
+    let date = new Date();
+
+
+
+    setInterval(function () {
+        let colr = "0123456789ABCDEF"
+            let hex = "#"
+            for (let i = 0; i < 6; i++) {
+                hex += colr[Math.floor(Math.random() * 16)]
+            }
+            document.body.style.backgroundColor=hex
+        let date = new Date();
+        // console.log(date.toLocaleTimeString());
+        clock.innerHTML = date.toLocaleTimeString()
+    }, 1000)
+
+    btn.addEventListener("click",function(){
+        let colr = "0123456789ABCDEF"
+            let hex = "#"
+            for (let i = 0; i < 6; i++) {
+                hex += colr[Math.floor(Math.random() * 16)]
+            }
+            clock.style.backgroundColor=hex
+    })
+
+    
+</script>
+
+</html>
